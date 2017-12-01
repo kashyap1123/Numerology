@@ -37,8 +37,6 @@ def single(nums):
 def single_quick(nums):
     return(sum(nums)%9)
 
-
-
 def doublle(nums):
     temp_sum    = 0
     numsum      = sum(nums)
@@ -80,6 +78,20 @@ def imp_years(dob):
     # as such. However, that lacks clarity and so we choose the above
 
     return(imp_years)
+
+def radical_years(dob,bno):
+    a0  = single([dob.year])
+    a1  = bno - a0
+    if (a1<1):
+        a1  += 9
+
+    return(range(dob.year + a0, dob.year + a0 + 100, 9))
+
+def zenith_years(dob):
+    z1  = dob.year + single([dob.day, dob.month]) + doublle([dob.year])
+    z2  = z1 + dob.day
+    z3  = z2 + dob.month
+    return([z1,z2,z3])
 
 class numerologybase:
     """Class to hold all the relevant numerological metrics and details for
@@ -165,6 +177,13 @@ class numerologybase:
 
     def pop_imp_years(self):
         self.imp_years  = imp_years(self.dob_corr)
+
+    def pop_radical_years(self):
+        self.pop_birthnumber()
+        self.radical_years  = radical_years(self.dob_corr, self.birth_number)
+
+    def pop_zenith_years(self):
+        self.zenith_years   = zenith_years(self.dob_corr)
 
 # for debug, remove once done
 print("done")
