@@ -15,6 +15,7 @@ We will then define getters for computing these."""
 
 from datetime import datetime as dt
 from datetime import timedelta
+from Num_LoMHelper import Num_LomHelper
 
 # Take a list of numbers and single <=> their sum (these commute)
 # Singling is defined as recursively summing digits till you end up with
@@ -118,12 +119,15 @@ class numerologybase:
         self.radical_years  = []
         self.zenith_years   = []
 
+        self.lom_helper     = Num_LomHelper(self.dob_corr)
+
     def pop_dob_today_corr(self):
         timeshift                   = timedelta(hours=12)
         temp_dob_datetime_corr      = self.dob - timeshift
         temp_today_datetime_corr    = self.now - timeshift
         self.dob_corr               = temp_dob_datetime_corr.date()
         self.today_corr             = temp_today_datetime_corr.date()
+        self.lom_helper.dob_corr    = self.dob_corr
 
     def pop_age(self):
         days_diff           = self.today_corr - self.dob_corr
@@ -135,7 +139,9 @@ class numerologybase:
 
     # Need to complete this
     def pop_birth_lom(self):
-        self.birth_lom      = 0
+        self.pop_dob_today_corr()
+        self.lom_helper.pop_birth_lom()
+        self.birth_lom      = self.lom_helper.birth_lom
 
     def pop_progress_number(self):
         # Procedure laid out below is valid only for birthday (curr) till EoY

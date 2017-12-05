@@ -11,9 +11,12 @@ from datetime import datetime
 # fname   = "Manjunath Kashyap"
 # lname   = "Jataprolu"
 # dob     = datetime(1988, 10, 03, 15, 25)
-fname   = "Vaishnavi Kasyap"
-lname   = "Jataprolu"
-dob     = datetime(1991, 11, 18, 22, 30)
+# fname   = "Vaishnavi Kasyap"
+# lname   = "Jataprolu"
+# dob     = datetime(1991, 11, 18, 22, 30)
+fname   = "Shreyas"
+lname   = ""
+dob     = datetime(1990, 01, 11, 05, 45)
 
 num_object  = numerologybase(fname, lname, dob)
 print(num_object.name_first, num_object.name_last)
@@ -33,3 +36,7 @@ num_object.pop_radical_years()
 print('Radical years are ', num_object.radical_years)
 num_object.pop_zenith_years()
 print('Zenith years are ', num_object.zenith_years)
+num_object.pop_birth_lom()
+print('Birth LoM is ', num_object.birth_lom)
+num_object.pop_curr_lom()
+print('Current LoM is ', num_object.curr_lom)
