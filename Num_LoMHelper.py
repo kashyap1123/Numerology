@@ -1,5 +1,5 @@
 """
-Num_LomHelper.py
+Num_LoMHelper.py
 ~~~~~~~~~~~~~~~~~~~~~~
 
 Some basic routines for Lord of Month Calculations.
@@ -18,7 +18,7 @@ def birth_lom(dob):
         birth_lom   = lom_list[match_ind[-1]]
     return(birth_lom)
 
-class Num_LomHelper:
+class Num_LoMHelper:
     """Class to hold the Lord of Month and related Calculations
     """
     def __init__(self, dob_corr):

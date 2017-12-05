@@ -15,7 +15,8 @@ We will then define getters for computing these."""
 
 from datetime import datetime as dt
 from datetime import timedelta
-from Num_LoMHelper import Num_LomHelper
+from Num_LoMHelper import Num_LoMHelper
+from Num_ChartHelper import Num_ChartHelper
 
 # Take a list of numbers and single <=> their sum (these commute)
 # Singling is defined as recursively summing digits till you end up with
@@ -119,7 +120,8 @@ class numerologybase:
         self.radical_years  = []
         self.zenith_years   = []
 
-        self.lom_helper     = Num_LomHelper(self.dob_corr)
+        self.lom_helper     = Num_LoMHelper(self.dob_corr)
+        self.chart_helper   = Num_ChartHelper(self.dob_corr)
 
     def pop_dob_today_corr(self):
         timeshift                   = timedelta(hours=12)
@@ -128,6 +130,7 @@ class numerologybase:
         self.dob_corr               = temp_dob_datetime_corr.date()
         self.today_corr             = temp_today_datetime_corr.date()
         self.lom_helper.dob_corr    = self.dob_corr
+        self.chart_helper.dob_corr  = self.dob_corr
 
     def pop_age(self):
         days_diff           = self.today_corr - self.dob_corr
@@ -156,7 +159,7 @@ class numerologybase:
 
         curr_year_adjust    = self.today_corr.year - adjust
 
-        # Step 1. Repeat Birth Number proc. with current year
+        # Step 1. Repeat Birth Number procedure with current year
         a1  = single([self.dob_corr.day, self.dob_corr.month, (curr_year_adjust)%100])
         # Step 2. Subtract YoB from current years. Note this is not always=age
         a2  = curr_year_adjust - self.dob_corr.year
@@ -190,6 +193,9 @@ class numerologybase:
 
     def pop_zenith_years(self):
         self.zenith_years   = zenith_years(self.dob_corr)
+
+    def print_chart(self):
+        self.chart_helper.print_chart()
 
 # for debug, remove once done
 print("done")
