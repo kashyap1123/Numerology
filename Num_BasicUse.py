@@ -14,9 +14,12 @@ from datetime import datetime
 # fname   = "Vaishnavi Kasyap"
 # lname   = "Jataprolu"
 # dob     = datetime(1991, 11, 18, 22, 30)
-fname   = "Shreyas"
-lname   = ""
-dob     = datetime(1990, 01, 11, 05, 45)
+# fname   = "Shreyas"
+# lname   = ""
+# dob     = datetime(1990, 01, 11, 05, 45)
+fname   = "Vijaya Kumar"
+lname   = "Jataprolu"
+dob     = datetime(1956, 01, 17, 04, 40)
 
 num_object  = numerologybase(fname, lname, dob)
 print(num_object.name_first, num_object.name_last)

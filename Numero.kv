@@ -1,0 +1,82 @@
+#:kivy 1.0.9
+
+<NumeroRun>:
+    label_wid: my_custom_label
+
+    BoxLayout:
+        orientation: 'vertical'
+        BoxLayout:
+            orientation: 'vertical'
+            Label:
+                # font_size: 50
+                # center_x: root.width / 4
+                # top: root.top - 10
+                text: "Numerology App"
+
+            Label:
+                text: 'First Name'
+
+            TextInput:
+                multiline: False
+                on_text: root.set_fname(args[1])
+
+            Label:
+                text: 'Last Name'
+
+            TextInput:
+                multiline: False
+                on_text: root.set_lname(args[1])
+
+            Label:
+                text: 'Year of Birth'
+
+            TextInput:
+                text: '0'
+                multiline: False
+                on_text: root.set_yob(args[1])
+
+            Label:
+                text: 'Month of Birth'
+
+            TextInput:
+                text: '0'
+                multiline: False
+                on_text: root.set_mob(args[1])
+
+            Label:
+                text: 'Day of Birth'
+
+            TextInput:
+                text: '0'
+                multiline: False
+                on_text: root.set_dob(args[1])
+
+            Label:
+                text: 'Hour of Birth'
+
+            TextInput:
+                text: '0'
+                multiline: False
+                on_text: root.set_hob(args[1])
+
+            Label:
+                text: 'Minute of Birth'
+
+            TextInput:
+                text: '0'
+                multiline: False
+                on_text: root.set_minob(args[1])
+
+            Button:
+                text: 'Calculate'
+                on_press: root.calculate()
+
+        ScrollView:
+            size:root.width, root.height/2
+            size_hint_y:None
+            Label:
+                id: my_custom_label
+                size_hint_y: None
+                text_size: self.width, None
+                height: self.texture_size[1]
+                text: 'Testing\n'

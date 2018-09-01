@@ -198,4 +198,4 @@ class numerologybase:
         self.chart_helper.print_chart()
 
 # for debug, remove once done
-print("done")
+# print("done")

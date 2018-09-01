@@ -32,12 +32,12 @@ class Num_ChartHelper:
         # Print the num chart in the format shown in the header
         # First force check frequency population
         self.pop_cardin()
-        line_len    = 60
+        line_len    = 80
         col_width   = line_len/4
         rule        = "=" * line_len
         sep         = "||"
 
-        vert        = [["", "Domestic", "Financial", "In-Laws" ]]
+        vert        = ["", "Domestic", "Financial", "In-Laws" ]
         horiz       = ["Philosophy", "Education", "Wealth"]
         # List order per chart
         order       = [ [3, 1, 9], [6, 7, 5], [2, 8, 4]]
@@ -48,6 +48,8 @@ class Num_ChartHelper:
         print(rule)
         print("Numerical Chart...")
         print("\n")
+        print(rule)
+        print sep.join(word.ljust(col_width) for word in vert )
 
         for i, arr in enumerate(order_fill):
             arr.insert(0,horiz[i])
