@@ -11,11 +11,22 @@ def birth_lom(dob):
     lom_list    = [8, 8, 3, 9, 6, 5, 2, 7, 1, 4, 5, 6, 9, 3]
     month       = dob.month
     day         = dob.day
-    match_ind   = [i for i,x in date_pairs if (month, day)<x]
+    for i,x in date_pairs:
+        print("\n",i,x)
+
+    idx         = 0
+    match_ind   = []
+    # match_ind   = [i for i,x in date_pairs if (month, day)<(i,x)]
+    for i,x in date_pairs:
+        if((month,day)<(i,x)):
+            match_ind.append(idx)
+        idx += 1
+    # print("\n Debug:: match_ind is ", match_ind)
     if(len(match_ind) == 0):
         birth_lom   = lom_list[0]
     else:
-        birth_lom   = lom_list[match_ind[-1]]
+        # birth_lom   = lom_list[match_ind[-1]]
+        birth_lom   = lom_list[match_ind[0]]
     return(birth_lom)
 
 class Num_LoMHelper:

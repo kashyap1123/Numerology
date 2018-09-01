@@ -87,7 +87,7 @@ def radical_years(dob,bno):
     if (a1<1):
         a1  += 9
 
-    return(range(dob.year + a0, dob.year + a0 + 100, 9))
+    return(range(dob.year + a1, dob.year + a1 + 100, 9))
 
 def zenith_years(dob):
     z1  = dob.year + single([dob.day, dob.month]) + doublle([dob.year])
@@ -120,8 +120,9 @@ class numerologybase:
         self.radical_years  = []
         self.zenith_years   = []
 
-        self.lom_helper     = Num_LoMHelper(self.dob_corr)
-        self.chart_helper   = Num_ChartHelper(self.dob_corr)
+        self.lom_helper_birth       = Num_LoMHelper(self.dob_corr)
+        self.lom_helper_curr        = Num_LoMHelper(self.today_corr)
+        self.chart_helper           = Num_ChartHelper(self.dob_corr)
 
     def pop_dob_today_corr(self):
         timeshift                   = timedelta(hours=12)
@@ -129,7 +130,8 @@ class numerologybase:
         temp_today_datetime_corr    = self.now - timeshift
         self.dob_corr               = temp_dob_datetime_corr.date()
         self.today_corr             = temp_today_datetime_corr.date()
-        self.lom_helper.dob_corr    = self.dob_corr
+        self.lom_helper_birth.dob_corr      = self.dob_corr
+        self.lom_helper_curr.dob_corr       = self.today_corr
         self.chart_helper.dob_corr  = self.dob_corr
 
     def pop_age(self):
@@ -143,8 +145,8 @@ class numerologybase:
     # Need to complete this
     def pop_birth_lom(self):
         self.pop_dob_today_corr()
-        self.lom_helper.pop_birth_lom()
-        self.birth_lom      = self.lom_helper.birth_lom
+        self.lom_helper_birth.pop_birth_lom()
+        self.birth_lom      = self.lom_helper_birth.birth_lom
 
     def pop_progress_number(self):
         # Procedure laid out below is valid only for birthday (curr) till EoY
@@ -179,7 +181,10 @@ class numerologybase:
     def pop_curr_lom(self):
         # First make sure progress_no is computed, we need it
         self.pop_progress_number()
-        self.curr_lom   = single([self.progress_no, lom(self.today_corr)])
+        self.pop_dob_today_corr()
+        self.lom_helper_curr.pop_birth_lom()
+        # print("\nDebug:: Progress No. is ",self.progress_no, " Curr LomTemp is ", self.lom_helper_curr.birth_lom)
+        self.curr_lom   = single([self.progress_no, self.lom_helper_curr.birth_lom])
 
     def pop_bad_years(self):
         self.bad_years  = bad_years(self.dob_corr)
