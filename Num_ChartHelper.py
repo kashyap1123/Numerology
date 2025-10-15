@@ -50,7 +50,8 @@ class Num_ChartHelper:
         print("\n")
 
         for i, arr in enumerate(order_fill):
+            arr = list(arr)
             arr.insert(0,horiz[i])
             print(rule)
-            print sep.join(word.ljust(col_width) for word in arr )
+            print(sep.join(word.ljust(int(col_width)) for word in arr ))
         print(rule)

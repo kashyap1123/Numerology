@@ -16,7 +16,7 @@ from datetime import datetime
 # dob     = datetime(1991, 11, 18, 22, 30)
 fname   = "Shreyas"
 lname   = ""
-dob     = datetime(1990, 01, 11, 05, 45)
+dob     = datetime(1990, 1, 11, 5, 45)
 
 num_object  = numerologybase(fname, lname, dob)
 print(num_object.name_first, num_object.name_last)
