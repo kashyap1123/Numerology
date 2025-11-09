@@ -10,6 +10,17 @@ from datetime import datetime
 
 
 def run_numerology_example(fname, lname, dob):
+	"""
+	Run an example of the Numerology class.
+
+	This function will print out the basic numerology metrics for a given name and date of birth.
+	These metrics include age, birth number, progress number, bad years, important years, radical years, zenith years, birth LoM, and current LoM.
+
+	Parameters:
+		fname (str): first name
+		lname (str): last name
+		dob (datetime): date of birth
+	"""
 	num_object = numerologybase(fname, lname, dob)
 	print(f"\nNumerology for: {num_object.name_first} {num_object.name_last}")
 	print("Date of Birth:", dob.date().strftime("%A %d. %B %Y"))
