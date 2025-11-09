@@ -6,6 +6,24 @@ Some basic routines for Lord of Month Calculations.
 """
 
 def birth_lom(dob):
+    """
+    Compute the Lord of Month for a given date of birth.
+
+    Parameters
+    ----------
+    dob : datetime.date
+        Date of Birth
+
+    Returns
+    -------
+    int
+        Lord of Month number
+
+    Examples
+    --------
+    >>> birth_lom(datetime.date(1990, 1, 11))
+    8
+    """
     date_pairs  = [(1, 21), (2, 21), (3, 21), (4, 21), (5, 21), (6, 21), (7, 5),\
                   (7, 21), (8, 5), (8, 21), (9, 21), (10, 21), (11, 21), (12, 21)]
     lom_list    = [8, 8, 3, 9, 6, 5, 2, 7, 1, 4, 5, 6, 9, 3]
@@ -15,7 +33,7 @@ def birth_lom(dob):
     if(len(match_ind) == 0):
         birth_lom   = lom_list[0]
     else:
-        birth_lom   = lom_list[match_ind[-1]]
+        birth_lom   = lom_list[match_ind[0]]
     return(birth_lom)
 
 class Num_LoMHelper:

@@ -40,6 +40,11 @@ def single_quick(nums):
     return(sum(nums)%9)
 
 def doublle(nums):
+    """
+    Take a list of numbers and double <=> their sum (these commute).
+    Doubling is defined as recursively summing digits till you end up with
+    a single digit.
+    """
     temp_sum    = 0
     numsum      = sum(nums)
     for digit in str(numsum):
